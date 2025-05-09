@@ -12,11 +12,21 @@ fun main() {
         println("El coeficiente 'a' no puede ser cero en una función cuadrática.")
         return
     }
-
     println("La función cuadrática es: ${FormatoFuncion(a, b, c)}")
-}
 
+    val rangoX = -5..5
+    println("\nTabla de valores:")
+    println("x\tf(x)")
+    for (x in rangoX) {
+        println("$x\t${CalcularFuncion(a, b, c, x.toDouble())}")
+    }
+}
 
 fun FormatoFuncion(a: Double, b: Double, c: Double): String {
     return "${a}x² ${if (b >= 0) "+ $b" else "- ${-b}"}x ${if (c >= 0) "+ $c" else "- ${-c}"}"
 }
+
+fun CalcularFuncion(a: Double, b: Double, c: Double, x: Double): Double {
+    return a * x * x + b * x + c
+}
+
