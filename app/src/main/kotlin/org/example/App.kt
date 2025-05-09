@@ -20,6 +20,15 @@ fun main() {
     for (x in rangoX) {
         println("$x\t${CalcularFuncion(a, b, c, x.toDouble())}")
     }
+
+    println("\nCálculo de raíces:")
+    val discriminante = CalcularDiscriminante(a, b, c)
+    val raices = CalcularRaices(a, b, c, discriminante)
+    if (raices.isEmpty()) {
+        println("La función no tiene raíces reales.")
+    } else {
+        println("Raíces: ${raices.joinToString(", ") {"%.2f".format(it)}}")
+    }
 }
 
 fun FormatoFuncion(a: Double, b: Double, c: Double): String {
@@ -28,5 +37,24 @@ fun FormatoFuncion(a: Double, b: Double, c: Double): String {
 
 fun CalcularFuncion(a: Double, b: Double, c: Double, x: Double): Double {
     return a * x * x + b * x + c
+}
+
+fun CalcularDiscriminante(a: Double, b: Double, c: Double): Double {
+    return b * b - 4 * a * c
+}
+
+fun CalcularRaices(a: Double, b:Double, c: Double, discriminante: Double): List<Double> {
+    return when {
+        discriminante > 0 -> {
+            val raiz1 = (-b + Math.sqrt(discriminante)) / (2 * a)
+            val raiz2 = (-b - Math.sqrt(discriminante)) / (2 * a)
+            listOf(raiz1, raiz2)
+        }
+        discriminante == 0.0 -> {
+            val raiz = -b / (2 * a)
+            listOf(raiz)
+        }
+        else -> emptyList()
+    }
 }
 
