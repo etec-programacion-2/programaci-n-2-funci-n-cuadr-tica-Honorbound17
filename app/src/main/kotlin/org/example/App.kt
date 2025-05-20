@@ -58,3 +58,20 @@ fun CalcularRaices(a: Double, b:Double, c: Double, discriminante: Double): List<
     }
 }
 
+fun calcularRaices2(a: Double, b: Double, c: Double) {
+    val discriminante = b * b - 4 * a * c
+    if (discriminante >= 0) {
+        val raiz1 = (-b + Math.sqrt(discriminante)) / (2 * a)
+        val raiz2 = (-b - Math.sqrt(discriminante)) / (2 * a)
+
+        println("====================================")
+        println("Resultado de la ecuación cuadrática")
+        println("Ecuación: ${a}x² + ${b}x + ${c} = 0")
+        println("Discriminante: $discriminante")
+        println("Raíz N°1: $raiz1")
+        println("Raíz N°2: $raiz2")
+        println("====================================")
+    } else {
+        println("Las raíces no son Reales, sino Complejas.")
+    }
+}
